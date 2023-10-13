@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import sqlite3
 
 app = FastAPI(
-    title="FastAPI Elastic Monitor Memory",
+    title="FastAPI Monitor Memory",
     description="develop by Jafar Esmaili",
     contract={
         "name": "Jafar Esmaili",

@@ -8,7 +8,7 @@ DATABASE_URL = "sqlite:///./memory_usage.db"
 database = Database(DATABASE_URL)
 
 app = FastAPI(
-    title="FastAPI Elastic Monitor Memory",
+    title="FastAPI Monitor Memory",
     description="develop by Jafar Esmaili",
     contract={
         "name": "Jafar Esmaili",
