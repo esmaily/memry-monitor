@@ -26,6 +26,16 @@ Base = declarative_base()
 
 
 class MemoryReport(Base):
+    """
+        Represents a memory report entity.
+
+        Attributes:
+            id (int): The unique identifier for the memory report.
+            used (float): The amount of used memory.
+            free (float): The amount of free memory.
+            total (float): The total available memory.
+            timestamp (datetime): The timestamp of the memory report.
+    """
     __tablename__ = "memory_report"
     id = Column(Integer, primary_key=True, index=True)
     used = Column(Float)
@@ -33,18 +43,21 @@ class MemoryReport(Base):
     total = Column(Float)
     timestamp = Column(DateTime)
 
-    # @validator("timestamp", pre=True)
-    # def format_datetime(cls, value):
-    #     return datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
 
 
 # Function to connect to the database
 async def connect_to_db():
+    """
+       Asynchronously connect to the database.
+     """
     await database.connect()
 
 
 # Function to disconnect from the database
 async def close_db_connection():
+    """
+       Asynchronously disconnect to the database.
+    """
     await database.disconnect()
 
 
@@ -59,6 +72,16 @@ async def shutdown():
 
 
 class MemoryReportResponse(BaseModel):
+    """
+        Represents a response model for a memory report.
+
+        Attributes:
+            id (int): The unique identifier for the memory report.
+            used (float): The amount of used memory.
+            free (float): The amount of free memory.
+            total (float): The total available memory.
+            timestamp (datetime): The timestamp of the memory report.
+    """
     id: int
     used: float
     free: float
@@ -67,6 +90,12 @@ class MemoryReportResponse(BaseModel):
 
 @app.get("/memory-reports/")
 async def get_items():
+    """
+        Retrieve a list of memory reports from the database.
+
+        Returns:
+            List[MemoryReportResponse]: A list of memory report responses.
+    """
     query = select([MemoryReport])
     results = await database.fetch_all(query)
     item_responses = [MemoryReportResponse(**result) for result in results]
