@@ -49,10 +49,16 @@ $ uvicorn async_main:app --host 0.0.0.0 --reload
 $ uvicorn main:app --host 0.0.0.0--reload
 ```
 
-#### 2. Get reports :
+#### 5. Get reports :
 
 ```sh
 $ curl -X GET 127.0.0.1:8000/memory-reports
+```
+
+#### 6. Run Test :
+
+```sh
+$ pytest
 ```
 
 ### Project link
