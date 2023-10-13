@@ -1,0 +1,6 @@
+fastapi==0.100.
+uvicorn==0.23.2
+psutil=5.9.5
+sqlalchemy=2.0.22
+databases==0.8.0
+aiosqlite==0.19.0
